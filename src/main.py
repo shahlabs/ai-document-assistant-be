@@ -9,7 +9,6 @@ app = Flask(__name__)
 CORS(app)
 
 env_path = Path(__file__).resolve().parent.parent / '.env'
-print(env_path)
 load_dotenv(dotenv_path=env_path)
 client = OpenAI()
 
