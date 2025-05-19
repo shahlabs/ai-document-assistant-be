@@ -25,10 +25,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install pytest pytest-cov openai dotenv flask flask_cors
         
-    - name: Run tests and check coverage
-      run: |
-        pytest --cov=src tests/ --cov-report=xml
-        
     - name: Verify Secrets Exist
       run: |
         if [ -z "$OPENAI_API_KEY" ]; then echo "OPENAI_API_KEY not set"; exit 1; fi
@@ -44,6 +40,10 @@ jobs:
           https://api.openai.com/v1/models \
           | jq -e '.data[].id' > /dev/null
     
+    - name: Run tests and check coverage
+      run: |
+        pytest --cov=src tests/ --cov-report=xml
+
     - name: Generate tests if coverage is low
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
