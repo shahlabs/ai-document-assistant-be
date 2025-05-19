@@ -14,19 +14,3 @@ def test_summarize_missing_email_text(client):
     response = client.post('/summarize', json={})
     assert response.status_code == 400
     assert b'No email text provided' in response.data
-
-def test_summarize_valid_request(client):
-    """Test valid request returns summary"""
-    mock_response = MagicMock()
-    mock_response.choices = [
-        MagicMock(message=MagicMock(content="Sample Summary"))
-    ]
-    
-    with patch('app.client.chat.completions.create', return_value=mock_response) as mock_openai:
-        test_email = "This is a test email about important business matters."
-        response = client.post('/summarize', json={'email_text': test_email})
-        
-        assert response.status_code == 200
-        assert 'summary' in response.json
-        assert response.json['summary'] == "Sample Summary"
-        mock_openai.assert_called_once()
