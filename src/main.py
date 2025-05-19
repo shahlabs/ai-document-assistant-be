@@ -3,14 +3,15 @@ from openai import OpenAI
 from dotenv import load_dotenv;
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+import os
 
 
 app = Flask(__name__)
 CORS(app)
 
-env_path = Path(__file__).resolve().parent.parent / '.env'
-load_dotenv(dotenv_path=env_path)
-client = OpenAI()
+# env_path = Path(__file__).resolve().parent.parent / '.env'
+# load_dotenv(dotenv_path=env_path)
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
 @app.route('/summarize', methods=['POST'])
 def summarize_email():
