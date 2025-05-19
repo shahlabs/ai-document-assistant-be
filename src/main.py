@@ -9,7 +9,7 @@ import os
 app = Flask(__name__)
 CORS(app)
 load_dotenv()
-client = OpenAI()
+client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
 @app.route('/summarize', methods=['POST'])
 def summarize_email():
