@@ -1,5 +1,5 @@
 [project]
-name = "ai-document-summarizer"
+name = "ai-document-assistant-be"
 version = "0.1.0"
 description = ""
 authors = [
@@ -15,8 +15,22 @@ dependencies = [
 ]
 
 [tool.poetry]
-packages = [{include = "ai_document_summarizer", from = "src"}]
+packages = [{ include = "src", from = "." } ]
 
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.5"
+pytest-cov = "^6.1.1"
+coverage = "^7.8.0"
+
+[tool.pytest.ini_options]
+addopts = "--cov=src --cov-report=xml"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+source = ["src"]
+
+[tool.coverage.report]
+fail_under = 90
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
