@@ -1,8 +1,6 @@
 import os
-import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
-from dotenv import load_dotenv;
 from openai import OpenAI
 
 
@@ -12,10 +10,7 @@ def get_coverage_percentage():
     return float(root.attrib['line-rate']) * 100
 
 def generate_tests(source_code):
-    env_path = Path(__file__).resolve().parent.parent.parent / '.env'
-    print(env_path)
-    load_dotenv(dotenv_path=env_path)
-    client = OpenAI()
+    client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
     prompt = f"""
     Given the following Python code, generate comprehensive pytest unit tests.
