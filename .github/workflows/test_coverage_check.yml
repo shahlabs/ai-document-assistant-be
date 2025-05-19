@@ -25,19 +25,17 @@ jobs:
         python -m pip install --upgrade pip
         pip install pytest pytest-cov openai dotenv flask flask_cors
         
-    - name: Verify Secrets Exist
-      env:
-        PAT_TOKEN: ${{ secrets.PAT_TOKEN }}
-      run: |
-        if [ -z "$PAT_TOKEN" ]; then echo "PAT_TOKEN not set"; exit 1; fi
-        echo "Secrets are available (values hidden for security)
-
     - name: Verify Open AI Key Exist
       env:
-        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}  # Must match secret name exactly
       run: |
-        if [ -z "$OPENAI_API_KEY" ]; then echo "OPENAI_API_KEY not set"; exit 1; fi
-        echo "Secrets are available (values hidden for security)
+        # Add validation check
+        if [ -z "$OPENAI_API_KEY" ]; then
+        echo "OPENAI_API_KEY is empty!"
+        exit 1
+        else
+        echo "OPENAI_API_KEY is set (value hidden)"
+        fi
 
     - name: Test OpenAI Connection
       env:
