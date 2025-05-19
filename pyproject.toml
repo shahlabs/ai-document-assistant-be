@@ -3,11 +3,15 @@ name = "ai-document-summarizer"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "Your Name",email = "you@example.com"}
+    {name = "Labdhi Shah"}
 ]
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.13,<4.0"
 dependencies = [
+    "dotenv (>=0.9.9,<0.10.0)",
+    "flask (>=3.1.1,<4.0.0)",
+    "flask-cors (>=6.0.0,<7.0.0)",
+    "openai (>=1.79.0,<2.0.0)"
 ]
 
 [tool.poetry]
