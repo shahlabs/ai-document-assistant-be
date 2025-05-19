@@ -22,7 +22,7 @@ def test_summarize_valid_request(client):
         MagicMock(message=MagicMock(content="Sample Summary"))
     ]
     
-    with patch('yourapp.client.chat.completions.create', return_value=mock_response) as mock_openai:
+    with patch('app.client.chat.completions.create', return_value=mock_response) as mock_openai:
         test_email = "This is a test email about important business matters."
         response = client.post('/summarize', json={'email_text': test_email})
         
