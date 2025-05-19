@@ -19,7 +19,7 @@ def test_summarize_valid_request(client):
     """Test valid request returns summary"""
     mock_response = MagicMock()
     mock_response.choices = [
-        MagicMock(message=MagicMock(content="Sample summary"))
+        MagicMock(message=MagicMock(content="Sample Summary"))
     ]
     
     with patch('yourapp.client.chat.completions.create', return_value=mock_response) as mock_openai:
@@ -28,5 +28,5 @@ def test_summarize_valid_request(client):
         
         assert response.status_code == 200
         assert 'summary' in response.json
-        assert response.json['summary'] == "Sample summary"
+        assert response.json['summary'] == "Sample Summary"
         mock_openai.assert_called_once()
