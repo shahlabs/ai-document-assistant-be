@@ -9,7 +9,6 @@ import os
 app = Flask(__name__)
 CORS(app)
 load_dotenv()
-client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
 @app.route('/summarize', methods=['POST'])
 def summarize_email():
@@ -18,6 +17,7 @@ def summarize_email():
     Expected JSON payload: {'email_text': '...'}
     """
     try:
+        client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
         data = request.get_json()
         email_text = data.get('email_text', '')
 
@@ -46,6 +46,7 @@ def summarize_email():
 @app.route('/ask', methods=['POST'])
 def ask_question():
     try:
+        client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
         data = request.get_json()
         document_text = data.get('document_text', '').strip()
         question = data.get('question', '').strip()
