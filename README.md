@@ -1,6 +1,7 @@
 This is a python project which uses flask and is backend to [ai-document-assistant-fe
 ](https://github.com/shahlabs/ai-document-assistant)
 It uses OpenAI to get the summary of the email and answer the question related to document uploaded by user. 
+This also has an action enabled that would add unit tests if coverage is not met.
 
 # Project setup
 
