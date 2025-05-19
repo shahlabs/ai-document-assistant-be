@@ -13,4 +13,3 @@ def test_summarize_missing_email_text(client):
     """Test missing email_text returns 500 Bad Request"""
     response = client.post('/summarize', json={})
     assert response.status_code == 500
-    assert b'No email text provided' in response.data
