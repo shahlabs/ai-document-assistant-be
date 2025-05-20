@@ -16,7 +16,8 @@ def generate_tests(source_code):
     Given the following Python code, generate comprehensive pytest unit tests.
     Return ONLY the test code, no explanations or comments about what you're going to do.
     Each test function should start with 'def test_' and use proper pytest assertions.
-    Use MagicMock if needed to mock the response
+    Use MagicMock if needed to mock the response. 
+    All required imports are already present, so no need to add import statements.
     
     {source_code}
     """
