@@ -18,7 +18,7 @@ def generate_tests(source_code):
         - Include 'client' fixture as second parameter after mock
         - Return ONLY test code with no comments/imports
         - Add unit tests for edge cases as well
-        - Follow this pattern:
+        - Follow this exact pattern and add assertions to it:
 
         @patch('src.main.OpenAI')
         def test_function_name(mock_openai, client):
@@ -26,13 +26,7 @@ def generate_tests(source_code):
             mock_response.choices = [MagicMock(message=MagicMock(content="..."))]
             mock_openai.return_value.chat.completions.create.return_value = mock_response
             response = client.post(...)
-            # Assertions
 
-        @patch('src.main.OpenAI') 
-        def test_edge_case_name(mock_openai, client):
-            # Error/validation testing
-            response = client.post(...)
-            # Assertions
 
     {source_code}
     """
