@@ -13,11 +13,25 @@ def generate_tests(source_code):
     client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 
     prompt = f"""
-    Given the following Python code, generate comprehensive pytest unit tests.
-    Return ONLY the test code, no explanations, no import statments or comments about what you're going to do.
-    Each test function should start with 'def test_' and use proper pytest assertions.
-    If Mock OpenAI instance is needed, add it on top of each test function using @patch('src.main.OpenAI')
+    Given the following Python code, generate pytest unit tests that:
+        - Use @patch('src.main.OpenAI') decorator for each test function
+        - Include 'client' fixture as second parameter after mock
+        - Return ONLY test code with no comments/imports
+        - Follow this exact pattern:
 
+        @patch('src.main.OpenAI')
+        def test_function_name(mock_openai, client):
+            mock_response = MagicMock()
+            mock_response.choices = [MagicMock(message=MagicMock(content="..."))]
+            mock_openai.return_value.chat.completions.create.return_value = mock_response
+            response = client.post(...)
+            # Assertions
+
+        @patch('src.main.OpenAI') 
+        def test_edge_case_name(mock_openai, client):
+            # Error/validation testing
+            response = client.post(...)
+            # Assertions
 
     {source_code}
     """
