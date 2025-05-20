@@ -14,10 +14,10 @@ def generate_tests(source_code):
 
     prompt = f"""
     Given the following Python code, generate comprehensive pytest unit tests.
-    Return ONLY the test code, no explanations or comments about what you're going to do.
+    Return ONLY the test code, no explanations, no import statments or comments about what you're going to do.
     Each test function should start with 'def test_' and use proper pytest assertions.
     If Mock OpenAI instance is needed, add it on top of each test function using @patch('src.main.OpenAI')
-    All required imports including unittest.mock, pytest are already present, so do not add import statements.
+
 
     {source_code}
     """
