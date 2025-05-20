@@ -25,7 +25,7 @@ def generate_tests(source_code):
     response = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are a Python testing expert. Provide only valid Python test code."},
+            {"role": "system", "content": "You are a Python testing expert. Provide only valid Python test code. Follow all instructions"},
             {"role": "user", "content": prompt}
         ]
     )
