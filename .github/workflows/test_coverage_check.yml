@@ -36,7 +36,7 @@ jobs:
     
     - name: Run tests and check coverage
       run: |
-        poetry run pytest tests/ -v --cov-report=xml
+        pytest --cov=src tests/ --cov-report=xml
 
     - name: Generate tests if coverage is low
       env:
