@@ -18,7 +18,7 @@ def generate_tests(source_code):
     Each test function should start with 'def test_' and use proper pytest assertions.
     Use MagicMock if needed to mock the response. 
     If Mock OpenAI instance is needed, add it on top of each test function using @patch('src.main.OpenAI')
-    All required imports are already present, so no need to add import statements.
+    All required imports including unittest.mock are already present, so no need to add import statements.
 
     {source_code}
     """
