@@ -17,7 +17,8 @@ def generate_tests(source_code):
         - Use @patch('src.main.OpenAI') decorator for each test function
         - Include 'client' fixture as second parameter after mock
         - Return ONLY test code with no comments/imports
-        - Follow this exact pattern:
+        - Add unit tests for edge cases as well
+        - Follow this pattern:
 
         @patch('src.main.OpenAI')
         def test_function_name(mock_openai, client):
