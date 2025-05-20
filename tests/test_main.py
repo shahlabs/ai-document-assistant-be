@@ -22,3 +22,21 @@ def test_summarize_endpoint(mock_openai, client):
     
     assert response.status_code == 200
     assert 'Mock summary' in response.json['summary']
+
+
+# Auto-generated tests
+@patch('src.main.OpenAI')
+def test_summarize_email(mock_openai, client):
+    mock_response = MagicMock()
+    mock_response.choices = [MagicMock(message=MagicMock(content="..."))]
+    mock_openai.return_value.chat.completions.create.return_value = mock_response
+    response = client.post('/summarize', json={'email_text': 'Test email text'})
+    # Assertions
+
+@patch('src.main.OpenAI') 
+def test_ask_question(mock_openai, client):
+    mock_response = MagicMock()
+    mock_response.choices = [MagicMock(message=MagicMock(content="..."))]
+    mock_openai.return_value.chat.completions.create.return_value = mock_response
+    response = client.post('/ask', json={'document_text': 'Test document', 'question': 'Test question'})
+    # Assertions
