@@ -2,6 +2,7 @@ import pytest
 from src.main import summarize_email, ask_question
 from unittest.mock import patch, MagicMock  
 from src.main import app;
+from flask import json
 
 @pytest.fixture
 def client():
